@@ -1,0 +1,366 @@
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap");
+
+span{
+	font-family: 'Yusei Magic', sans-serif;
+}
+
+.hik-2{
+  background-color: #be9566;
+  background-image:url(https://aipict.com/wp-content/uploads/2022/09/sky02.png);
+  background-position: center 0px;   
+  background-repeat:  no-repeat; 
+  height: 100px;
+  width: 100%;                                                                           
+  object-fit: cover; 
+  z-index: 2;   
+  
+}
+
+
+.hik{
+    background-color: #667bbe;
+    background-image:url(https://aipict.com/wp-content/uploads/2022/09/seaside_night06-1024x683.png);
+    background-position: center 0px;   
+    background-repeat:  no-repeat; 
+    height: 100px;
+    width: 100%;                                                                           
+    object-fit: cover; 
+    z-index: 2;   
+    
+}
+
+/* ローディング画面 */
+#loading {
+    font-size: 200%;
+    background-color: #5e5e5e; /*背景色*/
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: grid;
+    place-items: center;
+
+  }
+  /*切り替わり*/
+
+#loading-screen{
+    background-color:hsl(338, 23%, 70%);
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    translate: 0 100vh;
+
+}
+
+
+
+#button{   /*おやすみボタン*/
+    align-items: center;
+    justify-content: center;
+    color: #525252;
+    background-color:rgb(248, 164, 199);
+    letter-spacing: -5px;
+    font-weight: 400;
+    font-size: 50px;
+    text-align: center;
+    width: 250px;
+    height: 100px;
+    border-radius: 60px;
+    position: relative;
+    top: 380px;left: 50%;
+    transform:translate(-50%,0);
+    font-family: 'Yusei Magic', sans-serif;
+    cursor: pointer;
+    z-index: 100;
+}
+
+
+#obi{/*薄青の帯*/
+  font-family: 'Yusei Magic', sans-serif;
+  text-shadow: 5px 0 0 hsl(32, 29%, 39%) ;
+  color: hsl(71, 40%, 50%);
+  font-weight: 700;
+  font-size: 90px;
+  display: flex;
+  position: relative;
+  top: -100px;
+  align-items: center;
+  justify-content: center;
+  text-align: center; 
+  margin-left: auto;
+  margin-right: auto;   
+  background-color:hsla(152, 100%, 79%, 0.45);
+  width: 300px;
+  height:100px;
+}
+
+/*point表示*/
+#point{
+    letter-spacing: -5px;
+    font-size: 25px;
+    text-align: center;
+    position: relative;
+    top: 300px;
+    color: rgb(106, 196, 166);
+}
+
+
+/* 全体を囲うコンテナー */
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 5px double #8b8b8b;
+  width: 200px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;    
+  top: 300px;
+}
+
+/* pointの共通スタイル */
+.clock {
+  font-family: 'Share Tech Mono', monospace;
+  color: hsl(278, 69%, 60%);
+  line-height: 0px;
+  text-align: center;
+}
+
+/* pointのスタイル */
+.clock-time {
+  font-size: 50px;
+}
+
+
+
+
+ 
+/* メニューコンテナ全体のスタイル */
+.menu-container {
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 90;
+}
+  
+  /* メニューボタンのスタイル */
+  .menu-button {
+    display: block;
+    position: fixed;
+    top: 60px;
+    left: 5px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  
+  /* メニューバーのスタイル */
+  .bar {
+    display: block;
+    width: 50px;
+    height: 6px;
+    margin: 10px 0;
+    background-color: #646464;
+    transition: 0.4s;
+  }
+  
+  /* メニューボタンがチェックされた場合の1つ目のバーのアニメーション */
+  #menu-toggle:checked ~ .menu-button .bar:nth-child(1) {
+    transform: rotate(45deg) translate(-4px, 6px);
+  }
+  
+  /* メニューボタンがチェックされた場合の2つ目のバーのアニメーション */
+  #menu-toggle:checked ~ .menu-button .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  /* メニューボタンがチェックされた場合の3つ目のバーのアニメーション */
+  #menu-toggle:checked ~ .menu-button .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(16px, -26px);
+  }
+  
+  /* メニュートグルのスタイル */
+  #menu-toggle {
+    display: none;
+  }
+  
+  /* メニューのスタイル */
+  .menu {
+    position: fixed;
+    top: -100%; /* 変更: メニューを左からスライドインさせるために left に設定 */
+    width: 100%;
+    height: 35%;
+    background-color: hsla(293, 21%, 53%, 0.75);
+    transition: 0.4s;
+    z-index: 1;
+    overflow-y: auto;
+  }
+  
+  /* メニュートグルがチェックされた場合のメニューの表示アニメーション */
+  #menu-toggle:checked ~ .menu {
+    top:-137.25px; /* メニューを表示させるために left を 0 に変更 */
+  }
+  
+  /* メニュー内のリストのスタイル */
+  .menu ul {
+    list-style: none;
+    padding: 20px;
+  }
+  
+  /* メニュー内リストのリンクのスタイル */
+  .menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    display: block;
+    padding: 10px 0;
+    transition: 0.2s;
+  }
+  
+  /* メニュー内リストのリンクのホバー時のスタイル */
+  .menu ul li a:hover {
+    color: #9b94f8;
+  }
+
+  /*時間*/
+  .container-time{
+    display: flex;
+    position: relative;
+    top: -210px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;    
+    margin-left: auto;
+    margin-right: auto;
+    border: 5px double #8b8b8b;
+    border-radius: 15px;
+    width: 85%;
+    height: 155px;
+  }
+  .time{
+    font-family: 'Share Tech Mono', monospace;
+    color:  rgb(245, 172, 255, 60%);
+    text-shadow:0 0 10px rgb(218, 179, 255);
+    line-height: 0px;
+    text-align: center;    
+
+  }
+  .time-date{
+  font-size: 30px;
+  }
+  .time-time{
+    font-size: 75px;
+  }
+
+
+
+
+/*設定時間*/
+.set{
+  align-items: center;
+  display: flex;
+  position: relative;
+  top: -200px;
+  justify-content: center;
+  text-align: center;    
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  height: 70px;
+  font-size: 23px;
+  font-weight: 600;
+  color: #c5c1f0;
+}
+
+#point2{
+  letter-spacing: -5px;
+  font-size: 25px;
+  text-align: center;
+  position: relative;
+  top: 85px;
+  color: rgb(106, 196, 166); 
+  z-index: 1;
+}
+/* 全体を囲うコンテナー */
+.point2-2{
+  align-items: center;
+  text-align: center;
+  border: 5px double #8b8b8b;
+  width: 200px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: 90px;
+}
+/* pointの共通スタイル */
+.point2-2-0 {
+  font-family: 'Share Tech Mono', monospace;
+  color: hsl(325, 63%, 62%);
+  line-height: 0px;
+  text-align: center;
+}
+
+/* pointのスタイル */
+.clock-so {
+  font-size: 50px;
+}
+
+#container-settime{
+  width: 350px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #525252;
+  border-radius: 15px;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+ translate: 0vh 140vh; 
+}
+#settime{
+  text-align: center;
+  font-size: 30px;
+  padding-top: 15px;
+}
+.kisho,
+.shushin{
+  font-weight: 600;
+}
+input[type="kisho"],
+input[type="shushin"],
+input[type="kisho-2"],
+input[type="shushin-2"] {
+  text-align: center;
+  width: 75px;
+  height: 15px;
+  padding: 10px;
+  font-size: 25px;
+  margin-bottom: 10px;
+  border: 1px solid #b8b8b8;
+  border-radius: 4px;
+}
+#settime-btn{
+  width: 100px;
+  height: 50px;
+  border-radius: 25px;
+  background-color: #be6666;
+  font-size: 25px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#set-btn{
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  margin-right: 15px;
+  background-color: #c5c1f0;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 100;
+}
